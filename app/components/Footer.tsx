@@ -18,8 +18,8 @@ const Footer = () => {
     { name: "Car Sales", path: "/cars" },
     { name: "Car Wraps", path: "/services/wraps" },
     { name: "Paint Protection (PPF)", path: "/services/ppf" },
-    { name: "Window Tinting", path: "/services/tinting" },
-    { name: "Customization", path: "/services/customization" },
+    { name: "Window Tinting", path: "/services/window-tinting" },
+    { name: "Customization", path: "/services/custom-styling" },
   ];
 
   const socials = [
