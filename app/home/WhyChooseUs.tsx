@@ -80,6 +80,8 @@ const WhyChooseUs = () => {
             </div>
           ))}
         </div>
+
+        
       </div>
     </section>
   );

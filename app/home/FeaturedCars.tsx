@@ -42,7 +42,9 @@ const FeaturedCars = ({ cars }: FeaturedCarsProps) => {
         <div className="mt-10">
           <CarGrid cars={cars.slice(0, 6)} />
         </div>
+        
       </div>
+      
     </section>
   );
 };
