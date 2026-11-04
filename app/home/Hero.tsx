@@ -5,7 +5,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ChevronDown, MessageCircle } from "lucide-react";
 
-const WHATSAPP_NUMBER = "254745093837";
+import { whatsappUrl } from "@/lib/site";
+
 const WHATSAPP_MESSAGE =
   "Hi Monara Auto Studio! I found you online and I'd like to chat about my car.";
 
@@ -16,10 +17,6 @@ const stats = [
 ];
 
 const Hero = () => {
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    WHATSAPP_MESSAGE,
-  )}`;
-
   return (
     <section className="relative flex min-h-[calc(100vh-4rem)] items-center overflow-hidden bg-muted">
       {/* Background image */}
@@ -74,7 +71,7 @@ const Hero = () => {
               View Cars
             </Link>
             <a
-              href={whatsappUrl}
+              href={whatsappUrl(WHATSAPP_MESSAGE)}
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 rounded-xl border-2 border-secondary px-6 py-3 text-sm font-semibold text-secondary transition hover:bg-secondary hover:text-secondary-foreground"

@@ -5,11 +5,9 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Check, Clock, MessageCircle, Phone } from "lucide-react";
 
 import { getServiceBySlug, getServices } from "@/lib/api";
-import { formatKES, getIcon, whatsappLink } from "@/lib/types";
+import { formatKES, getIcon } from "@/lib/types";
+import { whatsappUrl, phoneUrl, SITE } from "@/lib/site";
 import ServiceCard from "./../ServicesCard";
-
-const PHONE = "0745093837";
-const WHATSAPP = "254745093837";
 
 interface ServiceDetailsPageProps {
   params: Promise<{ slug: string }>;
@@ -43,7 +41,8 @@ async function ServiceDetails({ params }: ServiceDetailsPageProps) {
   // Turn the icon name from the JSON (e.g. "Shield") into a real icon
   const Icon = getIcon(service.icon);
 
-  const message = `Hi Monara, I'd like to book or get a quote for ${service.title}.`;
+  // The WhatsApp message includes the name of THIS service
+  const message = `Hi Monara, I'd like to book or get a quote for ${service.title} at ${service.priceFrom ? formatKES(service.priceFrom) : ''}.`;
 
   return (
     <>
@@ -130,7 +129,7 @@ async function ServiceDetails({ params }: ServiceDetailsPageProps) {
 
               <div className="space-y-3">
                 <a
-                  href={whatsappLink(WHATSAPP, message)}
+                  href={whatsappUrl(message)}
                   target="_blank"
                   rel="noreferrer"
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-whatsapp px-4 py-3 text-sm font-semibold text-whatsapp-foreground transition hover:bg-whatsapp-dark"
@@ -139,11 +138,11 @@ async function ServiceDetails({ params }: ServiceDetailsPageProps) {
                   Book on WhatsApp
                 </a>
                 <a
-                  href={`tel:${PHONE}`}
+                  href={phoneUrl}
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-gold-gradient px-4 py-3 text-sm font-semibold text-primary-foreground transition hover:glow-gold"
                 >
                   <Phone className="h-4 w-4" />
-                  Call 0745 093 837
+                  Call {SITE.phoneDisplay}
                 </a>
               </div>
             </div>

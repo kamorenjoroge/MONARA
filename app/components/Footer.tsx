@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Car, Clock, Mail, MapPin, Phone } from "lucide-react";
+import { phoneUrl } from "@/lib/site";
 
 const Footer = () => {
   const quickLinks = [
@@ -132,9 +133,10 @@ const Footer = () => {
           <ul className="space-y-3 text-sm text-muted-foreground">
             <li className="flex items-start gap-2">
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary-dark" />
-              <a href="tel:0745093837" className="hover:text-secondary">
-                0745 093 837
+              <a href={phoneUrl} className="hover:text-secondary">
+                {phoneUrl.replace("tel:", "")}
               </a>
+              
             </li>
 
             <li className="flex items-start gap-2">

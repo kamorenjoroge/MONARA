@@ -12,16 +12,15 @@ import {
   Ship,
 } from "lucide-react";
 
-import { whatsappLink } from "@/lib/types";
+import { phoneUrl, whatsappUrl, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Car Imports from Japan, UK & UAE | Monara Auto Studio Nairobi",
-  description:
-    "Import your dream car to Kenya with Monara Auto Studio. Auction sourcing, shipping, Mombasa customs clearance and doorstep delivery. Call or WhatsApp 0745 093 837.",
+  description: `Import your dream car to Kenya with Monara Auto Studio. Auction sourcing, shipping, Mombasa customs clearance and doorstep delivery. Call or WhatsApp ${SITE.phoneDisplay}.`,
 };
 
-const PHONE = "0745093837";
-const WHATSAPP = "254745093837";
+// The message that WhatsApp opens with on this page
+const IMPORT_MESSAGE = "Hi Monara Auto Studio! I'd like to import a car. Can you help me?";
 
 const whatWeNeed = [
   "Your budget and target models (or let us advise)",
@@ -48,10 +47,8 @@ const steps = [
 ];
 
 export default function ImportsPage() {
-  const whatsappUrl = whatsappLink(
-    WHATSAPP,
-    "Hi Monara Auto Studio! I'd like to import a car. Can you help me?",
-  );
+  // Build the WhatsApp link once, then use it in both places below
+  const chatUrl = whatsappUrl(IMPORT_MESSAGE);
 
   return (
     <>
@@ -87,7 +84,7 @@ export default function ImportsPage() {
               Start My Import
             </Link>
             <a
-              href={whatsappUrl}
+              href={chatUrl}
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 rounded-xl border-2 border-secondary px-6 py-3 text-sm font-semibold text-secondary transition hover:bg-secondary hover:text-secondary-foreground"
@@ -193,14 +190,14 @@ export default function ImportsPage() {
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <a
-              href={`tel:${PHONE}`}
+              href={phoneUrl}
               className="flex items-center gap-2 rounded-xl bg-gold-gradient px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:glow-gold"
             >
               <Phone className="h-4 w-4" />
               Call Now
             </a>
             <a
-              href={whatsappUrl}
+              href={chatUrl}
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 rounded-xl border-2 border-secondary px-6 py-3 text-sm font-semibold text-secondary transition hover:bg-secondary hover:text-secondary-foreground"

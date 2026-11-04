@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from "react";
+// at the top, with the other imports
+import { phoneUrl } from "@/lib/site";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Car, Phone } from "lucide-react";
@@ -63,7 +65,7 @@ const NavBar = () => {
               </Link>
             ))}
             <a
-              href="tel:0745093837"
+              href={phoneUrl}
               className="flex items-center gap-2 bg-gold-gradient text-primary-foreground px-4 py-2 rounded-md text-sm font-semibold transition hover:glow-gold"
             >
               <Phone className="h-4 w-4" />
