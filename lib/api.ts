@@ -57,3 +57,7 @@ export async function getProducts(): Promise<Product[]> {
 export async function getPackages(): Promise<Package[]> {
   return packages as unknown as Package[];
 }
+export async function getFeaturedCars(): Promise<Car[]> {
+  const all = await getCars();
+  return all.filter((car) => car.featured);
+}
