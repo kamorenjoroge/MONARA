@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 
 import { getServices } from "@/lib/api";
-import { whatsappLink } from "@/lib/types";
+import { phoneUrl, whatsappUrl, SITE } from "@/lib/site";
 import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
@@ -10,13 +10,6 @@ export const metadata: Metadata = {
   description:
     "Call, WhatsApp, email or visit Monara Auto Studio in Nairobi. We respond fast during opening hours.",
 };
-
-// Contact details (later these can come from lib/mock-data/site.json through lib/api.ts)
-const PHONE = "0745093837";
-const PHONE_DISPLAY = "0745 093 837";
-const WHATSAPP = "254745093837";
-const EMAIL = "info@monaraautostudio.co.ke";
-const ADDRESS = "Mombasa Road, Nairobi, Kenya";
 
 const hours = [
   { days: "Monday – Friday", time: "8:00 AM – 6:00 PM" },
@@ -34,25 +27,25 @@ export default async function ContactPage() {
     {
       icon: Phone,
       title: "Call Us",
-      text: PHONE_DISPLAY,
-      href: `tel:${PHONE}`,
+      text: SITE.phoneDisplay,
+      href: phoneUrl,
     },
     {
       icon: MessageCircle,
       title: "WhatsApp",
       text: "Chat with us instantly",
-      href: whatsappLink(WHATSAPP, "Hi Monara Auto Studio! I'd like to chat about my car."),
+      href: whatsappUrl("Hi Monara Auto Studio! I'd like to chat about my car."),
     },
     {
       icon: Mail,
       title: "Email",
-      text: EMAIL,
-      href: `mailto:${EMAIL}`,
+      text: SITE.email,
+      href: `mailto:${SITE.email}`,
     },
     {
       icon: MapPin,
       title: "Visit the Studio",
-      text: ADDRESS,
+      text: SITE.address,
       href: undefined, // not a link, just text
     },
   ];
@@ -147,7 +140,7 @@ export default async function ContactPage() {
 
             {/* RIGHT: enquiry form */}
             <div className="lg:col-span-3">
-              <ContactForm services={serviceNames} whatsappNumber={WHATSAPP} />
+              <ContactForm services={serviceNames} />
             </div>
           </div>
         </div>

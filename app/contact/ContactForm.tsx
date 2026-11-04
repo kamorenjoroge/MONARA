@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { MessageCircle, Send } from "lucide-react";
 
-import { whatsappLink } from "@/lib/types";
+import { whatsappUrl } from "@/lib/site";
 
 // Shared look for every input box
 const inputClass =
@@ -11,10 +11,9 @@ const inputClass =
 
 interface ContactFormProps {
   services: string[]; // names for the "What do you need?" dropdown
-  whatsappNumber: string;
 }
 
-const ContactForm = ({ services, whatsappNumber }: ContactFormProps) => {
+const ContactForm = ({ services }: ContactFormProps) => {
   // What the visitor has typed so far
   const [form, setForm] = useState({
     name: "",
@@ -68,7 +67,7 @@ const ContactForm = ({ services, whatsappNumber }: ContactFormProps) => {
       .join("\n");
 
     // Open WhatsApp with the message ready to send
-    window.open(whatsappLink(whatsappNumber, message), "_blank");
+    window.open(whatsappUrl(message), "_blank");
   };
 
   return (

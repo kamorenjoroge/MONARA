@@ -3,11 +3,9 @@
 import { useState } from "react";
 import { CheckCircle2, MessageCircle, Phone, Send } from "lucide-react";
 
-import { formatKES, whatsappLink } from "@/lib/types";
+import { formatKES } from "@/lib/types";
 import type { Car, CarStatus } from "@/lib/types";
-
-const PHONE = "0745093837";
-const WHATSAPP = "254745093837";
+import { phoneUrl, whatsappUrl } from "@/lib/site";
 
 // Color of the status label for each status
 const statusStyles: Record<CarStatus, string> = {
@@ -67,6 +65,7 @@ const CarInquiry = ({ car }: CarInquiryProps) => {
     setSubmitted(true);
   };
 
+  // The number comes from lib/site.ts, so only the message is written here
   const whatsappMessage = `Hi Monara, I'm interested in the ${car.title} (${car.year}) listed at ${formatKES(car.price)}.`;
 
   return (
@@ -196,7 +195,7 @@ const CarInquiry = ({ car }: CarInquiryProps) => {
       {/* Quick contact */}
       <div className="grid grid-cols-2 gap-3 border-t border-border pt-5">
         <a
-          href={whatsappLink(WHATSAPP, whatsappMessage)}
+          href={whatsappUrl(whatsappMessage)}
           target="_blank"
           rel="noreferrer"
           className="flex items-center justify-center gap-2 rounded-xl bg-whatsapp px-3 py-2.5 text-sm font-semibold text-whatsapp-foreground transition hover:bg-whatsapp-dark"
@@ -205,7 +204,7 @@ const CarInquiry = ({ car }: CarInquiryProps) => {
           WhatsApp
         </a>
         <a
-          href={`tel:${PHONE}`}
+          href={phoneUrl}
           className="flex items-center justify-center gap-2 rounded-xl border-2 border-secondary px-3 py-2.5 text-sm font-semibold text-secondary transition hover:bg-secondary hover:text-secondary-foreground"
         >
           <Phone className="h-4 w-4" />

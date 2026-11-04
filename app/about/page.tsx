@@ -2,16 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Diamond, HeartHandshake, MessageCircle, Phone, Target } from "lucide-react";
 
-import { whatsappLink } from "@/lib/types";
+import { phoneUrl, whatsappUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About Us | Monara Auto Studio Nairobi",
   description:
     "Monara Auto Studio is Nairobi's premium car studio for imports, sales, styling, wraps, PPF and window tinting. Your Car. Your Style. Your Legacy.",
 };
-
-const PHONE = "0745093837";
-const WHATSAPP = "254745093837";
 
 // The three value cards on the right
 const values = [
@@ -107,7 +104,7 @@ export default function AboutPage() {
 
       {/* ---------- CALL TO ACTION ---------- */}
       <section className="border-t border-border bg-gradient-to-r from-primary/15 via-background to-secondary/15 py-14">
-        <div className="container mx-auto px-4 text-left sm:text-center">
+        <div className="container mx-auto px-4 text-center">
           <h2 className="font-heading text-2xl font-extrabold uppercase tracking-wide text-foreground sm:text-3xl">
             Ready to transform your ride?
           </h2>
@@ -118,14 +115,14 @@ export default function AboutPage() {
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <a
-              href={`tel:${PHONE}`}
+              href={phoneUrl}
               className="flex items-center gap-2 rounded-xl bg-gold-gradient px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:glow-gold"
             >
               <Phone className="h-4 w-4" />
               Call Now
             </a>
             <a
-              href={whatsappLink(WHATSAPP, "Hi Monara Auto Studio! I'd like to chat about my car.")}
+              href={whatsappUrl("Hi Monara Auto Studio! I'd like to chat about my car.")}
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 rounded-xl border-2 border-secondary px-6 py-3 text-sm font-semibold text-secondary transition hover:bg-secondary hover:text-secondary-foreground"

@@ -1,10 +1,9 @@
 import Image from "next/image";
 import { MessageCircle, Star } from "lucide-react";
 
-import { formatKES, whatsappLink } from "@/lib/types";
+import { formatKES } from "@/lib/types";
 import type { Product } from "@/lib/types";
-
-const WHATSAPP = "254745093837";
+import { whatsappUrl } from "@/lib/site";
 
 // Draws ONE product card. Receives a single `product` (shaped by the Product type).
 interface ProductCardProps {
@@ -71,7 +70,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             {formatKES(product.price)}
           </p>
           <a
-            href={whatsappLink(WHATSAPP, message)}
+            href={whatsappUrl(message)}
             target="_blank"
             rel="noreferrer"
             className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-whatsapp px-4 py-2.5 text-sm font-semibold text-whatsapp-foreground transition hover:bg-whatsapp-dark"

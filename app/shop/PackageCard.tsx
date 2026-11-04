@@ -1,9 +1,8 @@
 import { Check, Clock, MessageCircle } from "lucide-react";
 
-import { formatKES, whatsappLink } from "@/lib/types";
+import { formatKES } from "@/lib/types";
 import type { Package } from "@/lib/types";
-
-const WHATSAPP = "254745093837";
+import { whatsappUrl } from "@/lib/site";
 
 // Draws ONE package card. Receives a single `pkg` (shaped by the Package type).
 interface PackageCardProps {
@@ -76,7 +75,7 @@ const PackageCard = ({ pkg }: PackageCardProps) => {
       {/* Button (pinned to the bottom of the card) */}
       <div className="mt-auto pt-6">
         <a
-          href={whatsappLink(WHATSAPP, message)}
+          href={whatsappUrl(message)}
           target="_blank"
           rel="noreferrer"
           className="flex w-full items-center justify-center gap-2 rounded-xl bg-gold-gradient px-4 py-3 text-sm font-semibold text-primary-foreground transition hover:glow-gold"
